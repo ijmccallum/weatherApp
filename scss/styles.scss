@@ -1,0 +1,7 @@
+@import "./base/buttons.scss";
+
+.bg-alternate-greys {
+  &:nth-child(2n) {
+    background-color: #ccc;
+  }
+}

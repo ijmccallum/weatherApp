@@ -1,0 +1,19 @@
+{
+  "name": "weatherapp",
+  "version": "0.0.0",
+  "description": "Wee Wipro Weather app",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "parcel-bundler": "^1.8.1"
+  },
+  "dependencies": {
+    "moment": "^2.22.1"
+  }
+}

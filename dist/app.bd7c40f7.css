@@ -1,0 +1,6 @@
+button {
+  border: 0;
+  background: none; }
+
+.bg-alternate-greys:nth-child(2n) {
+  background-color: #ccc; }
