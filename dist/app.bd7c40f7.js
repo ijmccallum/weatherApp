@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({13:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -128,7 +128,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],12:[function(require,module,exports) {
+},{}],10:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -159,13 +159,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":13}],5:[function(require,module,exports) {
+},{"./bundle-url":11}],5:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":12}],4:[function(require,module,exports) {
+},{"_css_loader":10}],4:[function(require,module,exports) {
 module.exports = {
   "cod": "200",
   "message": 0.003,
@@ -6159,6 +6159,7 @@ function dataMeta(forecastArray) {
     tempHighest: kelvinToCelcius(highestTempInRange(forecastArray)),
     tempLowest: kelvinToCelcius(lowestTempInRange(forecastArray)),
     windSpeed: highestWindSpeedInRange(forecastArray),
+    windDeg: forecastArray[0].wind.deg,
     day: whatDayIsIt(forecastArray[0])
   };
   return meta;
@@ -6187,7 +6188,7 @@ var _dataMeta = require("./dataMeta.js");
 var _dataMeta2 = _interopRequireDefault(_dataMeta);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./dataHrsToDays.js":15,"./dataMeta.js":16}],14:[function(require,module,exports) {
+},{"./dataHrsToDays.js":15,"./dataMeta.js":16}],12:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6208,7 +6209,7 @@ exports.default = function (strings) {
   });
   return returnString;
 };
-},{}],21:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6216,8 +6217,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (temp) {
-  //-30c == 0 . -2c == -1 . 0c == 15 . 2c == 1 . 3c == 2 .
-  return colors[Math.round(temp / 2) + 15];
+  //   return colors[Math.round(temp / 2) + 15];
+  return materialColors[Math.round(temp / 2) + 4];
 };
 
 /**
@@ -6226,7 +6227,73 @@ exports.default = function (temp) {
 
 //-30 to 36. 66 degrees in steps of 2, 34 colors
 var colors = ["#ffffff", "#f5f5f5", "#ebebeb", "#e1e1e1", "#bebebe", "#828282", "#565474", "#5a007f", "#59447f", "#32007f", "#000082", "#0033b4", "#0000ff", "#007eff", "#00beff", "#00ffff", "#00f7c6", "#18d78c", "#00aa64", "#2baa2b", "#2bc82b", "#00ff00", "#ccff00", "#ffff00", "#eded7e", "#e4cc66", "#dcae49", "#ffaa00", "#ff5500", "#ff0000", "#c80000", "#ad0000", "#930000", "#780000"];
-},{}],19:[function(require,module,exports) {
+
+var materialColors = [{
+  bg: "#0d47a1",
+  txt: "white"
+}, {
+  bg: "#1565c0",
+  txt: "white"
+}, {
+  bg: "#1976d2",
+  txt: "white"
+}, {
+  bg: "#1e88e5",
+  txt: "white"
+}, {
+  bg: "#2196f3",
+  txt: "white"
+}, {
+  bg: "#42a5f5",
+  txt: "black"
+}, {
+  bg: "#64b5f6",
+  txt: "black"
+}, {
+  bg: "#90caf9",
+  txt: "black"
+}, {
+  bg: "#bbdefb",
+  txt: "black"
+}, {
+  bg: "#e3f2fd",
+  txt: "black"
+}, {
+  bg: "#ffffff",
+  txt: "black",
+  temp: 0
+}, {
+  bg: "#ffebee",
+  txt: "black"
+}, {
+  bg: "#ffcdd2",
+  txt: "black"
+}, {
+  bg: "#ef9a9a",
+  txt: "black"
+}, {
+  bg: "#e57373",
+  txt: "black"
+}, {
+  bg: "#ef5350",
+  txt: "black"
+}, {
+  bg: "#f44336",
+  txt: "white"
+}, {
+  bg: "#e53935",
+  txt: "white"
+}, {
+  bg: "#d32f2f",
+  txt: "white"
+}, {
+  bg: "#c62828",
+  txt: "white"
+}, {
+  bg: "#b71c1c",
+  txt: "white"
+}];
+},{}],13:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6234,7 +6301,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (high, low) {
-  return "\n    background: " + (0, _tempColor2.default)(high) + ";\n    background: -moz-linear-gradient(top, " + (0, _tempColor2.default)(high) + " 0%, " + (0, _tempColor2.default)(low) + " 100%);\n    background: -webkit-linear-gradient(top, " + (0, _tempColor2.default)(high) + " 0%," + (0, _tempColor2.default)(low) + " 100%);\n    background: linear-gradient(to bottom, " + (0, _tempColor2.default)(high) + " 0%," + (0, _tempColor2.default)(low) + " 100%);\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='" + (0, _tempColor2.default)(high) + "', endColorstr='" + (0, _tempColor2.default)(low) + "',GradientType=0 );\n  ";
+  var highClr = (0, _tempColor2.default)(high);
+  var lowClr = (0, _tempColor2.default)(low);
+  return "\n    background: " + highClr.bg + ";\n    background: -moz-linear-gradient(top, " + highClr.bg + " 0%, " + lowClr.bg + " 100%);\n    background: -webkit-linear-gradient(top, " + highClr.bg + " 0%," + lowClr.bg + " 100%);\n    background: linear-gradient(to bottom, " + highClr.bg + " 0%," + lowClr.bg + " 100%);\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='" + highClr.bg + "', endColorstr='" + lowClr.bg + "',GradientType=0 );\n  ";
 };
 
 var _tempColor = require("./tempColor.js");
@@ -6242,21 +6311,47 @@ var _tempColor = require("./tempColor.js");
 var _tempColor2 = _interopRequireDefault(_tempColor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./tempColor.js":21}],7:[function(require,module,exports) {
+},{"./tempColor.js":14}],28:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(["\n        <button \n        class=\"w-100 mh1-l mv3 relative pl3 pl0-l js-forecast-btn\" \n        style=\"border-top: 1px solid ", ";\n        border-bottom: 1px solid ", ";\">\n        <div \n          style=\"", "\"\n            class=\"absolute top-1 bottom-1 left-0 w1 \"\n        ></div>\n            <div class=\"pv3 ph2\">\n                <div class=\"f6 ttu\">", "</div>\n                <div class=\"f6 ttu\">%10</div>\n                <div class=\"f6 ttu\">0mm</div>\n                <div class=\"f6 ttu red\">", "\xB0C ^</div>\n                <div class=\"f6 ttu blue\">", "\xB0C v</div>\n                <div class=\"f6 ttu\">\u2197", "mph</div>\n            </div>\n        </button>\n    "], ["\n        <button \n        class=\"w-100 mh1-l mv3 relative pl3 pl0-l js-forecast-btn\" \n        style=\"border-top: 1px solid ", ";\n        border-bottom: 1px solid ", ";\">\n        <div \n          style=\"", "\"\n            class=\"absolute top-1 bottom-1 left-0 w1 \"\n        ></div>\n            <div class=\"pv3 ph2\">\n                <div class=\"f6 ttu\">", "</div>\n                <div class=\"f6 ttu\">%10</div>\n                <div class=\"f6 ttu\">0mm</div>\n                <div class=\"f6 ttu red\">", "\xB0C ^</div>\n                <div class=\"f6 ttu blue\">", "\xB0C v</div>\n                <div class=\"f6 ttu\">\u2197", "mph</div>\n            </div>\n        </button>\n    "]);
+exports.default = function () {
+  return "\n    <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" viewBox=\"0 0 512 512\">\n        <path d=\"M288.886,306.238H82.659v30h206.227c23.035,0,41.775,18.74,41.775,41.775c0,20.511-16.687,37.199-37.199,37.199    c-18.193,0-32.993-14.8-32.993-32.992h-30c0,34.734,28.259,62.992,62.993,62.992c37.054,0,67.199-30.146,67.199-67.199    C360.661,338.436,328.463,306.238,288.886,306.238z\"></path>\n        <path d=\"M410.329,66.788c-52.21,0-94.686,42.476-94.686,94.686h30c0-35.668,29.018-64.686,64.686-64.686    c39.519,0,71.671,32.151,71.671,71.671c0,43.709-35.56,79.269-79.269,79.269H0v30h402.731C462.982,277.728,512,228.711,512,168.46    C512,112.398,466.391,66.788,410.329,66.788z\"></path>\n        <path d=\"M235.895,102.436c-29.342,0-53.214,23.872-53.214,53.214h30c0-12.8,10.414-23.214,23.214-23.214    c14.648,0,26.564,11.916,26.564,26.564c0,16.657-13.55,30.208-30.207,30.208H82.659v30h149.593    c33.199,0,60.207-27.009,60.207-60.208C292.459,127.811,267.085,102.436,235.895,102.436z\"></path>\n    </svg>\n  ";
+};
+},{}],27:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _wind = require("./wind.js");
+
+var _wind2 = _interopRequireDefault(_wind);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  WindIcon: _wind2.default
+};
+},{"./wind.js":28}],7:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(["\n        <button \n        class=\"br3 shadow-4 overflow-hidden relative mb3 w-100 w-40-m w-30-l mw5 mh1-ns mb2-ns js-forecast-btn\"  \n        style=\"background: ", ";\n        color: ", ";\">\n            <div class=\"pt3 ph2 pb4 z-1 relative\">\n                <div class=\"f4 ttu mb2\">", "</div>\n                <div class=\"f6\">\n                    <span class=\"o-80\">High</span>\n                    <span class=\"f4 fw9\">", "\xB0C</span>\n                </div>\n                <div class=\"f6 mb2\">\n                    <span class=\"o-80\">Low</span>\n                    <span class=\"f4 fw9\">", "\xB0C</span>\n                </div>\n                <div class=\"f6 ttu\">%10 0mm</div>\n                <div class=\"f6 ttu\">\n                    <span \n                        class=\"w1 dib v-mid\"\n                        style=\"\n                            -webkit-transform: rotate(", ");\n                            transform: rotate(", "deg);\n                        \"\n                    >", "</span>\n                    ", "mph\n                </div>\n            </div>\n            <div \n                class=\"absolute w4 h4 rotate-45 o-20\"\n                style=\"background: ", "; right: -4rem; bottom: -4rem;\"\n            ></div>\n        </button>\n    "], ["\n        <button \n        class=\"br3 shadow-4 overflow-hidden relative mb3 w-100 w-40-m w-30-l mw5 mh1-ns mb2-ns js-forecast-btn\"  \n        style=\"background: ", ";\n        color: ", ";\">\n            <div class=\"pt3 ph2 pb4 z-1 relative\">\n                <div class=\"f4 ttu mb2\">", "</div>\n                <div class=\"f6\">\n                    <span class=\"o-80\">High</span>\n                    <span class=\"f4 fw9\">", "\xB0C</span>\n                </div>\n                <div class=\"f6 mb2\">\n                    <span class=\"o-80\">Low</span>\n                    <span class=\"f4 fw9\">", "\xB0C</span>\n                </div>\n                <div class=\"f6 ttu\">%10 0mm</div>\n                <div class=\"f6 ttu\">\n                    <span \n                        class=\"w1 dib v-mid\"\n                        style=\"\n                            -webkit-transform: rotate(", ");\n                            transform: rotate(", "deg);\n                        \"\n                    >", "</span>\n                    ", "mph\n                </div>\n            </div>\n            <div \n                class=\"absolute w4 h4 rotate-45 o-20\"\n                style=\"background: ", "; right: -4rem; bottom: -4rem;\"\n            ></div>\n        </button>\n    "]);
 
 exports.default = function (dailyData) {
-  var returnMarkup = "";
-  dailyData.forEach(function (day) {
-    returnMarkup += makeADay(day);
-  });
-  return returnMarkup;
+    var returnMarkup = "";
+    dailyData.forEach(function (day) {
+        returnMarkup += makeADay(day);
+    });
+    return returnMarkup;
 };
 
 var _html = require("./_html.js");
@@ -6271,6 +6366,10 @@ var _tempColor = require("./tempColor.js");
 
 var _tempColor2 = _interopRequireDefault(_tempColor);
 
+var _icons = require("./icons");
+
+var _icons2 = _interopRequireDefault(_icons);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } /**
@@ -6279,9 +6378,12 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
                                                                                                                                                    */
 
 function makeADay(dayData) {
-  return (0, _html2.default)(_templateObject, (0, _tempColor2.default)(dayData.tempHighest), (0, _tempColor2.default)(dayData.tempLowest), (0, _inlineGradient2.default)(dayData.tempHighest, dayData.tempLowest), dayData.day, dayData.tempHighest, dayData.tempLowest, dayData.windSpeed);
+    var highClr = (0, _tempColor2.default)(dayData.tempHighest);
+    var lowClr = (0, _tempColor2.default)(dayData.tempLowest);
+    console.log("highClr", highClr, lowClr);
+    return (0, _html2.default)(_templateObject, highClr.bg, highClr.txt, dayData.day, dayData.tempHighest, dayData.tempLowest, dayData.windDeg, dayData.windDeg, _icons2.default.WindIcon(), dayData.windSpeed, lowClr.bg);
 }
-},{"./_html.js":14,"./inlineGradient.js":19,"./tempColor.js":21}],2:[function(require,module,exports) {
+},{"./_html.js":12,"./inlineGradient.js":13,"./tempColor.js":14,"./icons":27}],2:[function(require,module,exports) {
 "use strict";
 
 require("./scss/styles.scss");
@@ -6329,7 +6431,7 @@ forecastEls.forEach(function (el) {
   console.log("el", el);
   el.addEventListener("click", dayClickHandler);
 });
-},{"./scss/styles.scss":5,"./weatherdata.json":4,"./lib/dataPrepper.js":6,"./lib/markupBuilder.js":7}],23:[function(require,module,exports) {
+},{"./scss/styles.scss":5,"./weatherdata.json":4,"./lib/dataPrepper.js":6,"./lib/markupBuilder.js":7}],26:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -6358,7 +6460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '49663' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51615' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -6499,5 +6601,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[23,2], null)
+},{}]},{},[26,2], null)
 //# sourceMappingURL=/app.bd7c40f7.map
