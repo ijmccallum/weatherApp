@@ -98,7 +98,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({11:[function(require,module,exports) {
+})({15:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -128,7 +128,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],10:[function(require,module,exports) {
+},{}],13:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -159,13 +159,13 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":11}],5:[function(require,module,exports) {
+},{"./bundle-url":15}],7:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":10}],4:[function(require,module,exports) {
+},{"_css_loader":13}],6:[function(require,module,exports) {
 module.exports = {
   "cod": "200",
   "message": 0.003,
@@ -1541,7 +1541,7 @@ module.exports = {
   }
 }
 ;
-},{}],15:[function(require,module,exports) {
+},{}],11:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1582,7 +1582,7 @@ function convertToDayArray(hrsArray) {
 
   return dayArray;
 }
-},{}],17:[function(require,module,exports) {
+},{}],14:[function(require,module,exports) {
 var define;
 var global = arguments[3];
 //! moment.js
@@ -6092,7 +6092,7 @@ var global = arguments[3];
 
 })));
 
-},{}],16:[function(require,module,exports) {
+},{}],12:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6164,7 +6164,7 @@ function dataMeta(forecastArray) {
   };
   return meta;
 }
-},{"moment":17}],6:[function(require,module,exports) {
+},{"moment":14}],8:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6188,7 +6188,7 @@ var _dataMeta = require("./dataMeta.js");
 var _dataMeta2 = _interopRequireDefault(_dataMeta);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./dataHrsToDays.js":15,"./dataMeta.js":16}],12:[function(require,module,exports) {
+},{"./dataHrsToDays.js":11,"./dataMeta.js":12}],16:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6209,7 +6209,7 @@ exports.default = function (strings) {
   });
   return returnString;
 };
-},{}],14:[function(require,module,exports) {
+},{}],17:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6293,25 +6293,7 @@ var materialColors = [{
   bg: "#b71c1c",
   txt: "white"
 }];
-},{}],13:[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function (high, low) {
-  var highClr = (0, _tempColor2.default)(high);
-  var lowClr = (0, _tempColor2.default)(low);
-  return "\n    background: " + highClr.bg + ";\n    background: -moz-linear-gradient(top, " + highClr.bg + " 0%, " + lowClr.bg + " 100%);\n    background: -webkit-linear-gradient(top, " + highClr.bg + " 0%," + lowClr.bg + " 100%);\n    background: linear-gradient(to bottom, " + highClr.bg + " 0%," + lowClr.bg + " 100%);\n    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='" + highClr.bg + "', endColorstr='" + lowClr.bg + "',GradientType=0 );\n  ";
-};
-
-var _tempColor = require("./tempColor.js");
-
-var _tempColor2 = _interopRequireDefault(_tempColor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./tempColor.js":14}],28:[function(require,module,exports) {
+},{}],19:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6321,7 +6303,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
   return "\n    <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.1\" viewBox=\"0 0 512 512\">\n        <path d=\"M288.886,306.238H82.659v30h206.227c23.035,0,41.775,18.74,41.775,41.775c0,20.511-16.687,37.199-37.199,37.199    c-18.193,0-32.993-14.8-32.993-32.992h-30c0,34.734,28.259,62.992,62.993,62.992c37.054,0,67.199-30.146,67.199-67.199    C360.661,338.436,328.463,306.238,288.886,306.238z\"></path>\n        <path d=\"M410.329,66.788c-52.21,0-94.686,42.476-94.686,94.686h30c0-35.668,29.018-64.686,64.686-64.686    c39.519,0,71.671,32.151,71.671,71.671c0,43.709-35.56,79.269-79.269,79.269H0v30h402.731C462.982,277.728,512,228.711,512,168.46    C512,112.398,466.391,66.788,410.329,66.788z\"></path>\n        <path d=\"M235.895,102.436c-29.342,0-53.214,23.872-53.214,53.214h30c0-12.8,10.414-23.214,23.214-23.214    c14.648,0,26.564,11.916,26.564,26.564c0,16.657-13.55,30.208-30.207,30.208H82.659v30h149.593    c33.199,0,60.207-27.009,60.207-60.208C292.459,127.811,267.085,102.436,235.895,102.436z\"></path>\n    </svg>\n  ";
 };
-},{}],27:[function(require,module,exports) {
+},{}],18:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6337,7 +6319,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   WindIcon: _wind2.default
 };
-},{"./wind.js":28}],7:[function(require,module,exports) {
+},{"./wind.js":19}],9:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6357,10 +6339,6 @@ exports.default = function (dailyData) {
 var _html = require("./_html.js");
 
 var _html2 = _interopRequireDefault(_html);
-
-var _inlineGradient = require("./inlineGradient.js");
-
-var _inlineGradient2 = _interopRequireDefault(_inlineGradient);
 
 var _tempColor = require("./tempColor.js");
 
@@ -6383,7 +6361,7 @@ function makeADay(dayData) {
     console.log("highClr", highClr, lowClr);
     return (0, _html2.default)(_templateObject, highClr.bg, highClr.txt, dayData.day, dayData.tempHighest, dayData.tempLowest, dayData.windDeg, dayData.windDeg, _icons2.default.WindIcon(), dayData.windSpeed, lowClr.bg);
 }
-},{"./_html.js":12,"./inlineGradient.js":13,"./tempColor.js":14,"./icons":27}],2:[function(require,module,exports) {
+},{"./_html.js":16,"./tempColor.js":17,"./icons":18}],4:[function(require,module,exports) {
 "use strict";
 
 require("./scss/styles.scss");
@@ -6431,7 +6409,7 @@ forecastEls.forEach(function (el) {
   console.log("el", el);
   el.addEventListener("click", dayClickHandler);
 });
-},{"./scss/styles.scss":5,"./weatherdata.json":4,"./lib/dataPrepper.js":6,"./lib/markupBuilder.js":7}],26:[function(require,module,exports) {
+},{"./scss/styles.scss":7,"./weatherdata.json":6,"./lib/dataPrepper.js":8,"./lib/markupBuilder.js":9}],20:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -6460,7 +6438,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51615' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50927' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -6601,5 +6579,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},[26,2], null)
+},{}]},{},[20,4], null)
 //# sourceMappingURL=/app.bd7c40f7.map

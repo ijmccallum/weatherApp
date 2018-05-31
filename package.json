@@ -5,13 +5,29 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "test": "jest",
     "build": "parcel build index.html --out-dir docs --public-url /weatherApp/"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/docs/**",
+      "!**/dist/**",
+      "!**/coverage/**",
+      "!**/.cache/**"
+    ]
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.0.1",
+    "jest": "^23.1.0",
     "node-sass": "^4.9.0",
-    "parcel-bundler": "^1.8.1"
+    "parcel-bundler": "^1.8.1",
+    "regenerator-runtime": "^0.11.1"
   },
   "dependencies": {
     "moment": "^2.22.1"
